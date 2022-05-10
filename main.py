@@ -28,7 +28,7 @@ def catalan(n,k):
     # return array
     return catalan
 
-catalan_arr_mod_8 = catalan(N,8)
+catalan_arr_mod_7 = catalan(N,7)
 catalan_arr_mod_5 = catalan(N,5)
 
 W = 2 # whole step
@@ -53,7 +53,7 @@ channel = 0
 volume = 100
 
 for jj in range(0,N):
-    jump_index = catalan_arr_mod_8[jj]
+    jump_index = catalan_arr_mod_7[jj]
     if major: pitch = tonic_pitch + major_jumps_arr[jump_index]
     else: pitch = tonic_pitch + minor_jumps_arr[jump_index]
 
