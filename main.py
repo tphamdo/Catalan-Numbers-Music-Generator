@@ -1,7 +1,13 @@
 from midiutil.MidiFile import MIDIFile
 import numpy as np
 
-# This script creates a midi file based on the sequence of catalan numbers. It chooses notes in E major based on the catalan numbers' value mod 8. 0=Eb, 1=F, 2=G ... 7=D. It also chooses the duration of that note taking the catalan numbers' value mod 5 and using that as an index into an array containing [1/16,1/8,1/4,1/2,1] note durations. You can adjust the below parameters to adjust the number of notes generated, the tonic note, and major or minor.
+# This script creates a midi file based on the sequence of catalan numbers. 
+# It chooses notes in E major based on the catalan numbers' value mod 8. 
+# 0=Eb, 1=F, 2=G ... 7=D. 
+# It also chooses the duration of that note taking the catalan numbers' value mod 5 
+# and using that as an index into an array containing [sixteenth, eighth, quarter, half, whole] note durations. 
+# You can adjust the below parameters to adjust the number of notes generated, the tonic note, and major or minor.
+# You can play the generated midi file using musescore or another program.
 
 N = 150 # number of notes
 major = True # false would be minor
@@ -9,24 +15,20 @@ tonic_pitch = 60 + 3  # Eb
 
 def catalan(n,k):
     ''' Returns a numpy array of catalan numbers mod k '''
-    if (n == 0 or n == 1):
-        return 1
- 
     # Table to store results of subproblems
     catalan = np.zeros(n+1, dtype=int)
-    # [0 for i in range(n + 1)]
- 
+
     # Initialize first two values in table
     catalan[0] = 1
     catalan[1] = 1
- 
+
     # Fill entries in catalan[] using recursive formula
     for i in range(2, n + 1):
         catalan[i] = 0
         for j in range(i):
             catalan[i] += catalan[j] * catalan[i-j-1]
             catalan[i] %= k
- 
+
     # return array
     return catalan
 
@@ -64,7 +66,6 @@ for jj in range(0,N):
 
     mf.addNote(track, channel, pitch, time, duration, volume)
     time+=duration
-    
 
 # write it to disk
 with open("output.mid", 'wb') as outf:
