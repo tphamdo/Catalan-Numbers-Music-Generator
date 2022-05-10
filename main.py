@@ -1,17 +1,13 @@
 from midiutil.MidiFile import MIDIFile
 import numpy as np
 
-# This script creates a midi file based on the sequence of catalan numbers. 
-# It chooses notes in E major based on the catalan numbers' value mod 8. 
-# 0=Eb, 1=F, 2=G ... 7=D. 
-# It also chooses the duration of that note taking the catalan numbers' value mod 5 
-# and using that as an index into an array containing [sixteenth, eighth, quarter, half, whole] note durations. 
 # You can adjust the below parameters to adjust the number of notes generated, the tonic note, and major or minor.
 # You can play the generated midi file using musescore or another program.
 
+MIDDLE_C = 60
 N = 150 # number of notes
 major = True # false would be minor
-tonic_pitch = 60 + 3  # Eb
+tonic_pitch = MIDDLE_C + 3  # Eb
 
 def catalan(n,k):
     ''' Returns a numpy array of catalan numbers mod k '''
