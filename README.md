@@ -6,4 +6,4 @@ This script creates a midi file based on the sequence of catalan numbers. It cho
 
 The script is also adjustable to the number of notes generated, the tonic note, and to the use of a major or minor scale.
 
-You can find sample the audio at /musescore/output.mp3 and the sheet music at /musescore/output.pdf
+You can find samples of the audio at /musescore/output.mp3 and the sheet music at /musescore/output.pdf
